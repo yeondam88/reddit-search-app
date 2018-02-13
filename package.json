@@ -1,0 +1,14 @@
+{
+  "name": "finddit",
+  "version": "1.0.0",
+  "description": "Build a Reddit Search App with ES6, Fetch & Parcel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lloyd Park",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.20.1"
+  }
+}

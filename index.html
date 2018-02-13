@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+  <title>Finddit</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="./images/logo.png">
+    </div>
+    <h1>
+      <a href="/">Reddit Search By Keywords</a>
+    </h1>
+  </header>
+  <nav class="navbar">
+    <ul>
+      <li>Reddit</li>
+      <li>Limit
+        <select id="limit">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+      </li>
+    </ul>
+  </nav>
+
+  <main class="wrapper">
+    <div class="inner">
+      <div class="form-group">
+        <form id="search-form">
+          <input class="input-phone" type="text" placeholder="Search by keywords.." /> Sort By:
+          <input type="radio" id="relevance" name="sortby" checked value="relevance">
+          <label for="relavance">Relevance</label>
+          <input type="radio" id="latest" name="sortby" value="new">
+          <label for="relavance">Latest</label>
+        </form>
+      </div>
+    </div>
+
+    <div id="result"></div>
+  </main>
+
+
+
+
+  <script src="./index.js"></script>
+</body>
+
+</html>
