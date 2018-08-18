@@ -8,9 +8,7 @@ No library, framework, just plain modern JavaScript (ES2015/ES6) to build an app
 ```
 git clone https://github.com/yeondam88/reddit-search-app.git
 
-npm install
-
-open index.html file with live-server plugin or live-server npm package.
+open index.html file with live-server VS Code plugin or just with browser
 
 ```
 
@@ -18,4 +16,6 @@ open index.html file with live-server plugin or live-server npm package.
 - moment.js (used for formatting date from server data)
 
 # Features
-- with keyword, you can search reddit post with options (sort, limit option)
+- Search by keyword
+- Search by keyword with sorting option
+- Search by keyword with post limit
