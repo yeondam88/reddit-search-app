@@ -4,10 +4,13 @@
 const searchForm = document.querySelector("#search-form");
 const searchInput = document.querySelector(".input-phone");
 
-/*
-** Creating redditAPI wrapper object with search method.
-** Search method required 3 parameters (searchTerm, sortBy, searchLimit)
-*/
+/**
+ * reddit API wrapper
+ * returning promise with response.
+ * @param {string} searchTerm
+ * @param {string} sortBy
+ * @param {number} searchLimit
+ */
 const redditAPI = {
   search: function(searchTerm, sortBy, searchLimit) {
     return fetch(
@@ -36,13 +39,15 @@ searchForm.addEventListener("submit", event => {
 
   searchInput.value = ""; // resetting input value to empty
 
-  redditAPI.search(searchTerm, sortBy, searchLimit).then(results => {
-    let output = '<div class="card-columns">';
-    results.forEach(post => {
-      let image = post.preview // if there is no image provided, replace with this placeholder image
-        ? post.preview.images[0].source.url
-        : "https://cdn.comparitech.com/wp-content/uploads/2017/08/reddit-1.jpg";
-      output += `
+  redditAPI
+    .search(searchTerm, sortBy, searchLimit)
+    .then(results => {
+      let output = '<div class="card-columns">';
+      results.forEach(post => {
+        let image = post.preview // if there is no image provided, replace with this placeholder image
+          ? post.preview.images[0].source.url
+          : "https://cdn.comparitech.com/wp-content/uploads/2017/08/reddit-1.jpg";
+        output += `
         <div class="card">
           <img class="card-img-top" src=${image} alt="Card image cap">
           <div class="card-body">
@@ -65,10 +70,11 @@ searchForm.addEventListener("submit", event => {
           </div>
         </div>
         `;
-    });
-    output += "</div>";
-    document.querySelector("#result").innerHTML = output;
-  });
+      });
+      output += "</div>";
+      document.querySelector("#result").innerHTML = output;
+    })
+    .catch(err => console.error(err));
   event.preventDefault();
 });
 
