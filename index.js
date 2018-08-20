@@ -12,6 +12,7 @@
   const searchInput = $(".input-phone");
   const sortBySelect = $("#sortBy");
   const searchLimitSelect = $("#limit");
+  const resultContainer = $("#result");
 
   /**
    * reddit API wrapper
@@ -99,7 +100,7 @@
     });
 
     output += "</div>";
-    $("#result").innerHTML = output;
+    resultContainer.innerHTML = output;
   }
 
   /**
@@ -128,11 +129,14 @@
    * @returns truncated text.
    */
   function truncateText(text, limit) {
+    // find " " index start with index of limit (e.g. if limit is 30, then look for next " " start from index of 30)
     const shortened = text.indexOf(" ", limit);
     if (shortened == -1) {
+      // if shortened not found - it means text is shorter than limit length then just return text.
       return text;
     } else {
-      return text.substring(0, shortened);
+      // if text is longer than limit, then slice it with shortened value and add '...' and return it.
+      return text.substring(0, shortened) + "...";
     }
   }
 })(document);
