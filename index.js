@@ -38,7 +38,7 @@
   searchForm.addEventListener("submit", event => {
     event.preventDefault(); // Prevent default action - by calling this method, browser will not refresh after subtmit.
 
-    const searchTerm = searchInput.value; // get search term
+    const searchTerm = searchInput.value.replace(/[^0-9a-z]/gi, ""); // get search term and remove all non-alphabetical character.
     const sortBy = sortBySelect.value; // get sort option e.g. Relevance or latest
     const searchLimit = searchLimitSelect.value; // get searchlimit e.g. 5 or 10 or more
 
