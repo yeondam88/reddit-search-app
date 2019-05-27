@@ -3,7 +3,7 @@
  *  Use IIFE to prevent to expose to global scope. (Also prevent name conflict with 3rd party library)
  *  Variables, functions, API wrapper object is not accessible in the browser.
  */
-(function(document) {
+(function (document) {
   const $ = document.querySelector.bind(document); // Make alias for document.querySelector() to $
   /**
    *  DOM Selections
@@ -22,10 +22,10 @@
    * @param {number} searchLimit
    */
   const redditAPI = {
-    search: function(searchTerm, sortBy, searchLimit) {
+    search: function (searchTerm, sortBy, searchLimit) {
       return fetch(
-        `http://www.reddit.com/search.json?q=${searchTerm}&sort=${sortBy}&limit=${searchLimit}`
-      )
+          `https://www.reddit.com/search.json?q=${searchTerm}&sort=${sortBy}&limit=${searchLimit}`
+        )
         .then(response => response.json())
         .then(json => json.data.children.map(data => data.data)) // extract actual data within json object.
         .catch(err => console.error(err));
@@ -72,8 +72,9 @@
     let output = '<div class="card-columns">';
     data.forEach(post => {
       let image = post.preview // if there is no image provided, replace with this placeholder image
-        ? post.preview.images[0].source.url
-        : "https://cdn.comparitech.com/wp-content/uploads/2017/08/reddit-1.jpg";
+        ?
+        post.preview.images[0].source.url :
+        "https://cdn.comparitech.com/wp-content/uploads/2017/08/reddit-1.jpg";
       output += `
       <div class="card">
         <img class="card-img-top" src=${image} alt="Card image cap">
